@@ -29,7 +29,7 @@ jobs:
         run: npm ci
       - name: npm test
         run: npm run test
-  deploy:
+  build:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -43,8 +43,24 @@ jobs:
         run: npm ci
       - name: Build Project
         run: npm run build
-      - name: Deploy
-        run: echo "Build Seccess"
+      - name: Upload Dist Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download Dist Artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: dist-files
+
+    - name: Deploy
+      run: echo "Deploy successful"
+
 
 
 
