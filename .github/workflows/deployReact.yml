@@ -49,8 +49,8 @@ jobs:
       - name: Upload Dist Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: github-pages
-          path: dist  # Make sure your build output is in 'dist'
+          name: github-pages  # This is the artifact name
+          path: dist  # This should be the path to the built project (dist folder)
 
   deploy:
     needs: build
@@ -67,7 +67,7 @@ jobs:
       - name: Download Dist Artifact
         uses: actions/download-artifact@v4
         with:
-          name: github-pages  # This should match the artifact name from the build job
+          name: github-pages  # This should match the artifact name used in the build job
 
       - name: Deploy to GitHub Pages
         id: deployment
