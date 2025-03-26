@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://github.com/aman706080.github.io/Started-action",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
